@@ -3,13 +3,13 @@ package com.game.engine;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameState {
+public class GameScore {
 
     private int score;
 
     private Map<String, Integer> scores;
 
-    public GameState() {
+    public GameScore() {
         this.scores = new HashMap<>();
     }
 
