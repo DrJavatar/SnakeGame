@@ -1,15 +1,18 @@
 package com.game.engine.entity.snake;
 
 import com.game.engine.entity.Entity;
+import com.game.engine.world.CollisionBehaviour;
+import com.game.engine.world.behaviour.GameOverBehaviour;
 import com.game.utilties.Vector2d;
 
 public class SnakeBody extends Entity {
 
-    private SnakeBody next;
-    private SnakeBody previous;
+    protected SnakeBody next;
+    protected SnakeBody previous;
 
     public SnakeBody(Vector2d position) {
         super(position);
+        super.behaviour = new GameOverBehaviour(this);
     }
 
     public boolean isHead() {
@@ -26,10 +29,5 @@ public class SnakeBody extends Entity {
 
     public SnakeBody getPrevious() {
         return previous;
-    }
-
-    @Override
-    public boolean hasCollided(Entity entity) {
-        return false;
     }
 }

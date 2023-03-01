@@ -1,5 +1,7 @@
 package com.game.engine.world;
 
+import com.game.engine.entity.Entity;
+
 public class Collision {
 
     private GameWorld world;
@@ -8,6 +10,8 @@ public class Collision {
         this.world = world;
     }
 
-
+    public boolean hasCollidedWith(Entity entity) {
+        return false;
+    }
 
 }

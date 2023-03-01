@@ -37,4 +37,7 @@ public class GameWorld {
         return false;
     }
 
+    public Snake getSnake() {
+        return snake;
+    }
 }

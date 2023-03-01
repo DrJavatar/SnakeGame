@@ -24,7 +24,6 @@ public class GameScreen implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        skin = new GameCanvas(new GameWorld());
-
+        skin = new GameCanvas();
     }
 }
