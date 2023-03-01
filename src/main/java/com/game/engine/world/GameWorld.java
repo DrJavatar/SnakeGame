@@ -1,5 +1,6 @@
 package com.game.engine.world;
 
+import com.game.engine.GameState;
 import com.game.engine.entity.Entity;
 import com.game.engine.entity.snake.Snake;
 import com.game.utilties.Vector2d;
@@ -15,10 +16,13 @@ public class GameWorld {
 
     private Snake snake;
 
+    private GameState state;
+
     public GameWorld() {
         collision = new Collision(this);
         entities = new HashMap<>();
         snake = new Snake(5, 5);
+        state = new GameState();
     }
 
     public boolean addEntity(Entity entity) {
