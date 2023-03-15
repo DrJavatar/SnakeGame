@@ -2,6 +2,7 @@ package com.game.engine.world;
 
 import com.game.engine.GameScore;
 import com.game.engine.entity.Entity;
+import com.game.engine.entity.food.Food;
 import com.game.engine.entity.snake.Snake;
 import com.game.utilties.Vector2d;
 
@@ -23,6 +24,14 @@ public class GameWorld {
         entities = new HashMap<>();
         snake = new Snake(5, 5);
         state = new GameScore();
+    }
+
+    public Food newFood(double x, double y) {
+        return new Food(x, y);
+    }
+
+    public Snake newSnake(double x, double y) {
+        return new Snake(x, y);
     }
 
     public boolean addEntity(Entity entity) {
