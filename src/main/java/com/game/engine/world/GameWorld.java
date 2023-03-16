@@ -1,6 +1,7 @@
 package com.game.engine.world;
 
 import com.game.engine.GameScore;
+import com.game.engine.GameSettings;
 import com.game.engine.entity.Entity;
 import com.game.engine.entity.food.Food;
 import com.game.engine.entity.snake.Snake;
@@ -19,11 +20,14 @@ public class GameWorld {
 
     private GameScore state;
 
+    private GameSettings settings;
+
     public GameWorld() {
         collision = new Collision(this);
         entities = new HashMap<>();
         snake = new Snake(5, 5);
         state = new GameScore();
+        settings = new GameSettings();
     }
 
     public Food newFood(double x, double y) {
