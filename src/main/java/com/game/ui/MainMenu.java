@@ -1,20 +1,20 @@
 package com.game.ui;
 
+import com.game.ui.controller.ControllerManager;
+import com.game.ui.controller.GameUIController;
 import com.game.utilties.TextUtilities;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainMenu implements Initializable {
+public class MainMenu extends GameUIController {
 
     @FXML
     private AnchorPane pane;
@@ -39,11 +39,11 @@ public class MainMenu implements Initializable {
         // start the animation
         transition.play();*/
 
-        Timeline timeline = new Timeline(
+       /* Timeline timeline = new Timeline(
                 new KeyFrame(Duration.millis(10), event -> moveLabel())
         );
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+        timeline.play();*/
     }
 
     private void moveLabel() {
@@ -68,5 +68,16 @@ public class MainMenu implements Initializable {
         // Update the label's position
         title.setLayoutX(newX);
         title.setLayoutY(newY);
+    }
+
+    @FXML
+    public void onQuit() {
+        Platform.exit();
+        System.exit(0);
+    }
+
+    @FXML
+    public void onSettings() throws IOException {
+        ControllerManager.switchToSettings(this);
     }
 }
