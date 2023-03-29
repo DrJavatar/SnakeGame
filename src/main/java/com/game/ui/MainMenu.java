@@ -77,6 +77,11 @@ public class MainMenu extends GameUIController {
     }
 
     @FXML
+    public void onHiscores() throws IOException {
+        ControllerManager.switchToHiscore(this);
+    }
+
+    @FXML
     public void onSettings() throws IOException {
         ControllerManager.switchToSettings(this);
     }

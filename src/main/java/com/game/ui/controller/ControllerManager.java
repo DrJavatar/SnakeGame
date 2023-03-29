@@ -2,6 +2,7 @@ package com.game.ui.controller;
 
 import com.game.application.SnakeApp;
 import com.game.ui.MainMenu;
+import com.game.ui.hiscores.HiscoreController;
 import com.game.ui.settings.SettingsController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -30,6 +31,17 @@ public class ControllerManager {
         SettingsController settings = new SettingsController();
         settings.setPrimaryStage(from.getPrimaryStage());
         fxmlLoader.setController(settings);
+        fxmlLoader.setLocation(uiFxml);
+        Parent parent = fxmlLoader.load();
+        from.primaryStage.setScene(new Scene(parent));
+    }
+
+    public static void switchToHiscore(GameUIController from) throws IOException {
+        URL uiFxml = SnakeApp.class.getResource("hiscore.fxml");
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        HiscoreController hiscore = new HiscoreController();
+        hiscore.setPrimaryStage(from.getPrimaryStage());
+        fxmlLoader.setController(hiscore);
         fxmlLoader.setLocation(uiFxml);
         Parent parent = fxmlLoader.load();
         from.primaryStage.setScene(new Scene(parent));
