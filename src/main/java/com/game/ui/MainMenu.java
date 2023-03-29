@@ -5,7 +5,6 @@ import com.game.ui.controller.GameUIController;
 import com.game.utilties.TextUtilities;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -84,5 +83,10 @@ public class MainMenu extends GameUIController {
     @FXML
     public void onSettings() throws IOException {
         ControllerManager.switchToSettings(this);
+    }
+
+    @FXML
+    public void onStartGame() throws IOException {
+        ControllerManager.switchToNewGame(this);
     }
 }

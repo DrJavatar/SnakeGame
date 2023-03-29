@@ -15,7 +15,7 @@
       </Label>
       <VBox alignment="CENTER" layoutX="262.0" layoutY="136.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="startGameBtn" mnemonicParsing="false" text="Start Game" />
+            <Button fx:id="startGameBtn" mnemonicParsing="false" onAction="#onStartGame" text="Start Game" />
             <Button fx:id="hiscoresBtn" mnemonicParsing="false" onAction="#onHiscores" prefHeight="25.0" prefWidth="76.0" text="Hiscores" />
             <Button fx:id="startGameBtn1" layoutX="372.0" layoutY="253.0" mnemonicParsing="false" onAction="#onSettings" text="Settings" />
             <Button fx:id="hiscoresBtn1" mnemonicParsing="false" onAction="#onQuit" prefHeight="25.0" prefWidth="76.0" text="Quit" />
