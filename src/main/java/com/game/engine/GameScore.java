@@ -5,6 +5,7 @@ import com.game.ui.game.HiscoreModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,7 +20,7 @@ public class GameScore {
 
     private int score;
 
-    private final Map<String, Integer> scores;
+    private final Map<String, Pair<GameSettings.Difficulty, Integer>> scores;
 
     private String directory;
 
@@ -35,8 +36,8 @@ public class GameScore {
         model.score.set(this.score);
     }
 
-    public void onGameEnd(String name) {
-        scores.put(name, this.score);
+    public void onGameEnd(GameSettings settings) {
+        scores.put(settings.getName(), new Pair<>(settings.getDifficulty(), score));
         save();
         this.score = 0;
     }
@@ -65,11 +66,17 @@ public class GameScore {
                 return;
             }
             byte[] data = Files.readAllBytes(path);
-            Map<String, Integer> scores = GSON.fromJson(new String(data), new TypeToken<Map<String, Integer>>(){}.getType());
+            if(data.length == 0) {
+                return;
+            }
+            Map<String, Pair<GameSettings.Difficulty, Integer>> scores = GSON.fromJson(new String(data), new TypeToken<Map<String, Pair<GameSettings.Difficulty, Integer>>>(){}.getType());
             this.scores.putAll(scores);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public Map<String, Pair<GameSettings.Difficulty, Integer>> getScores() {
+        return scores;
+    }
 }

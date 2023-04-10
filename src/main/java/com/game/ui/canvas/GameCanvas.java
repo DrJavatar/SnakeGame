@@ -50,7 +50,7 @@ public class GameCanvas extends AnimationTimer implements GameSkin {
             if(world.isGameOver()) {
                 gc.setFill(Color.WHITE);
                 gc.fillText("Game Over!", width / 2, height / 2);
-                world.getState().onGameEnd(world.getSettings().getName());
+                world.getState().onGameEnd(world.getSettings());
                 stop();
             } else {
                 drawGame(world);

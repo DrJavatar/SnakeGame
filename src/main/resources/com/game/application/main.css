@@ -149,7 +149,7 @@
 
 .table-view {
     -fx-background-color: #4d4d4d;
-    -fx-text-background-color: #ffffff;
+    -fx-text-background-color: #333333; /* Changed */
     -fx-table-cell-border-color: transparent;
 }
 
@@ -165,6 +165,7 @@
 .table-view .cell {
     -fx-border-color: transparent;
     -fx-text-fill: #ffffff;
+    -fx-background-color: #333333;
 }
 
 .table-view .row-cell:odd {

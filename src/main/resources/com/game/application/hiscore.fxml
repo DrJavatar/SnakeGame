@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox>
@@ -21,7 +20,7 @@
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Button layoutX="515.0" mnemonicParsing="false" onAction="#onMainMenu" text="Main Menu" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Button layoutX="515.0" mnemonicParsing="false" onAction="#onMainMenu" text="Main Menu" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -29,10 +28,11 @@
                </children>
             </AnchorPane>
             <Separator prefWidth="200.0" />
-            <TableView>
+            <TableView fx:id="scoreTable">
               <columns>
-                <TableColumn prefWidth="291.0" text="Name" />
-                <TableColumn minWidth="0.0" prefWidth="319.0" text="Score" />
+                <TableColumn fx:id="nameColumn" prefWidth="291.0" text="Name" />
+                  <TableColumn fx:id="gameDifficulty" prefWidth="291.0" text="Diffeculty" />
+                <TableColumn fx:id="scoreColumn" minWidth="0.0" prefWidth="319.0" text="Score" />
               </columns>
             </TableView>
          </children>
