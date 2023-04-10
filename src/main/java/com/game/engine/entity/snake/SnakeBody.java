@@ -1,7 +1,6 @@
 package com.game.engine.entity.snake;
 
 import com.game.engine.entity.Entity;
-import com.game.engine.world.CollisionBehaviour;
 import com.game.engine.world.behaviour.GameOverBehaviour;
 import com.game.utilties.Vector2d;
 
