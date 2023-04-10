@@ -1,12 +1,11 @@
 package com.game.engine.entity;
 
-import com.game.engine.world.CollisionBehaviour;
 import com.game.engine.world.GameWorld;
 import com.game.utilties.Vector2d;
 
 import static com.game.ui.canvas.GameCanvas.BLOCK_SIZE;
 
-public abstract class Entity implements Locatable {
+public abstract class Entity implements Locatable, EntitySkin {
 
     protected Vector2d position;
     protected Direction direction;
@@ -34,5 +33,9 @@ public abstract class Entity implements Locatable {
     @Override
     public Direction getDirection() {
         return this.direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 }

@@ -3,6 +3,7 @@ package com.game.engine.entity.snake;
 import com.game.engine.entity.Entity;
 import com.game.engine.world.GameWorld;
 import com.game.utilties.Vector2d;
+import javafx.scene.canvas.GraphicsContext;
 
 public class SnakeBody extends Entity {
 
@@ -18,5 +19,10 @@ public class SnakeBody extends Entity {
         if(parent.intersects(this)) {
             world.setGameOver(true);
         }
+    }
+
+    @Override
+    public void drawEntity(GraphicsContext gc) {
+
     }
 }

@@ -12,22 +12,16 @@ public class GameSettings {
         this.difficulty = difficulty;
     }
 
-    public static enum Difficulty {
-        EASY(1, 0),
-        NORMAL(2, 20),
-        HARD(3, 50),
-        IMPOSSIBLE(4, 75);
+    public enum Difficulty {
+        EASY(0),
+        NORMAL(20),
+        HARD(50),
+        IMPOSSIBLE(75);
 
-        private int snakeSpeed;
-        private int objectGenerationRate;
+        private final int objectGenerationRate;
 
-        Difficulty(int snakeSpeed, int objectGenerationRate) {
-            this.snakeSpeed = snakeSpeed;
+        Difficulty(int objectGenerationRate) {
             this.objectGenerationRate = objectGenerationRate;
-        }
-
-        public int getSnakeSpeed() {
-            return snakeSpeed;
         }
 
         public int getObjectGenerationRate() {

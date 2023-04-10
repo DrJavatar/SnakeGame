@@ -2,6 +2,7 @@ package com.game.ui;
 
 import com.game.di.DependencyManager;
 import com.game.engine.entity.Direction;
+import com.game.engine.entity.snake.Snake;
 import com.game.engine.world.GameWorld;
 import com.game.ui.canvas.GameCanvas;
 import com.game.ui.controller.GameUIController;
@@ -33,10 +34,10 @@ public class GameScreenController extends GameUIController {
     }
 
     public void initGameControls() {
+        GameWorld world = DependencyManager.get("world");
         primaryStage.getScene().setOnKeyPressed(event -> {
             Direction direction = null;
-            GameWorld world = DependencyManager.get("world");
-            Vector2d dir = world.getSnake().getDirectionPos();
+            Snake snake = world.getSnake();
             switch (event.getCode()) {
                 case A -> direction = Direction.LEFT;
                 case D -> direction = Direction.RIGHT;
@@ -46,11 +47,19 @@ public class GameScreenController extends GameUIController {
                 }
             }
 
-            if (direction != null && (dir.getX() != -direction.getDx() || dir.getY() != -direction.getDy())) {
-                dir.setX(direction.getDx() * BLOCK_SIZE);
-                dir.setY(direction.getDy() * BLOCK_SIZE);
+            if(snake.getDirection() == Direction.LEFT && direction == Direction.RIGHT) {
+                return;
+            } else if(snake.getDirection() == Direction.RIGHT && direction == Direction.LEFT) {
+                return;
+            } else if(snake.getDirection() == Direction.UP && direction == Direction.DOWN) {
+                return;
+            } else if(snake.getDirection() == Direction.DOWN && direction == Direction.UP) {
+                return;
             }
+
+            snake.setDirection(direction);
         });
+        world.placeEntities(skin);
         skin.start();
     }
 }

@@ -1,5 +1,7 @@
 package com.game.engine.entity;
 
+import com.game.utilties.Vector2d;
+
 public enum Direction {
     LEFT(-1, 0),
     RIGHT(1, 0),

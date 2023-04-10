@@ -1,6 +1,7 @@
 package com.game.ui.canvas;
 
 import com.game.di.DependencyManager;
+import com.game.engine.entity.Entity;
 import com.game.engine.entity.food.Food;
 import com.game.engine.entity.snake.Snake;
 import com.game.engine.entity.snake.SnakeBody;
@@ -14,6 +15,8 @@ import javafx.scene.paint.Color;
 public class GameCanvas extends AnimationTimer implements GameSkin {
 
     public final static double BLOCK_SIZE = 20.0;
+    public final static double WIDTH = 800;
+    public final static double HEIGHT = 591;
 
     private final Canvas canvas;
     private long lastTick = 0;
@@ -50,7 +53,7 @@ public class GameCanvas extends AnimationTimer implements GameSkin {
 
             gc.clearRect(0, 0, width, height);
             if(world.isGameOver()) {
-                gc.setFill(Color.BLACK);
+                gc.setFill(Color.WHITE);
                 gc.fillText("Game Over!", width / 2, height / 2);
                 stop();
             } else {
@@ -68,23 +71,11 @@ public class GameCanvas extends AnimationTimer implements GameSkin {
         GraphicsContext gc = getGraphicsContext2D();
 
         Snake snake = world.getSnake();
-        Food food = world.getCurrentFood();
+        snake.drawEntity(gc);
 
-        gc.setFill(Color.GREEN);
-        for (SnakeBody body : snake) {
-            Vector2d pos = body.getPosition();
-            gc.fillRect(pos.getX(), pos.getY(), BLOCK_SIZE, BLOCK_SIZE);
+        for (Entity entity : world) {
+            entity.drawEntity(gc);
         }
-
-
-
-        Vector2d fpos = food.getPosition();
-        if (food.isEaten()) {
-            gc.setFill(Color.RED);
-        } else {
-            gc.setFill(Color.YELLOW);
-        }
-        gc.fillRect(fpos.getX(), fpos.getY(), BLOCK_SIZE, BLOCK_SIZE);
 
     }
 }

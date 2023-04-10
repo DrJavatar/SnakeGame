@@ -7,7 +7,7 @@ public class GameScore {
 
     private int score;
 
-    private Map<String, Integer> scores;
+    private final Map<String, Integer> scores;
 
     public GameScore() {
         this.scores = new HashMap<>();

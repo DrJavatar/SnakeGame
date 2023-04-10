@@ -2,46 +2,70 @@ package com.game.engine.world;
 
 import com.game.engine.GameScore;
 import com.game.engine.GameSettings;
+import com.game.engine.entity.Entity;
 import com.game.engine.entity.food.Food;
 import com.game.engine.entity.snake.Snake;
 import com.game.ui.canvas.GameCanvas;
+import com.game.utilties.Vector2d;
 
-import java.util.Random;
+import java.util.*;
 
-import static com.game.ui.canvas.GameCanvas.BLOCK_SIZE;
+import static com.game.ui.canvas.GameCanvas.*;
 
-public class GameWorld {
+public class GameWorld implements Iterable<Entity> {
 
-    private Snake snake;
+    private final Snake snake;
 
-    private Food currentFood;
+    private Map<Vector2d, Entity> entities;
 
-    private GameScore state;
+    private final GameScore state;
 
-    private GameSettings settings;
+    private final GameSettings settings;
 
     private boolean isGameOver;
 
     public GameWorld() {
-        snake = new Snake(5, 5);
-        currentFood = new Food(25, 25);
+        snake = new Snake(WIDTH / 2, HEIGHT / 2);
         state = new GameScore();
         settings = new GameSettings();
         isGameOver = false;
+        entities = new HashMap<>();
+    }
+
+    public boolean removeEntity(Entity entity) {
+        entities.remove(entity.getPosition());
+        return true;
+    }
+
+    public boolean addEntity(Entity entity) {
+        if(entities.containsKey(entity.getPosition())) {
+            return false;
+        }
+        entities.put(entity.getPosition(), entity);
+        return true;
+    }
+
+    public void placeEntities(GameCanvas canvas) {
+        /*// Place walls on the top and bottom edges
+        for (double x = 0; x < WIDTH; x += BLOCK_SIZE) {
+            entities.add(new Wall(new Vector2d(x, 0), false));
+            entities.add(new Wall(new Vector2d(x, HEIGHT - BLOCK_SIZE), false));
+        }
+        // Place walls on the left and right edges
+        for (double y = BLOCK_SIZE; y < HEIGHT - BLOCK_SIZE; y += BLOCK_SIZE) {
+            entities.add(new Wall(new Vector2d(0, y), false));
+            entities.add(new Wall(new Vector2d(WIDTH - BLOCK_SIZE, y), false));
+        }*/
+        addEntity(new Food(50, 50));
     }
 
     public void onTick(GameCanvas canvas) {
-
-        if(currentFood.isEaten()) {
-            state.updateScore(1);
-            double x = new Random().nextDouble(canvas.getWidth() / BLOCK_SIZE) * BLOCK_SIZE;
-            double y = new Random().nextDouble(canvas.getHeight() / BLOCK_SIZE) * BLOCK_SIZE;
-            currentFood.getPosition().set(x, y);
-            currentFood.setEaten(false);
+        snake.onTick(this);
+        for (Entity entity : entities.values()) {
+            entity.onTick(this);
         }
 
-        snake.onTick(this);
-        currentFood.onTick(this);
+
     }
 
     public GameScore getState() {
@@ -60,7 +84,8 @@ public class GameWorld {
         return snake;
     }
 
-    public Food getCurrentFood() {
-        return currentFood;
+    @Override
+    public Iterator<Entity> iterator() {
+        return entities.values().iterator();
     }
 }
