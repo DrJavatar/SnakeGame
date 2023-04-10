@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -23,7 +24,7 @@
                   </Label>
                   <HBox layoutX="489.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#onStart" text="Start">
+                        <Button fx:id="startBtn" mnemonicParsing="false" onAction="#onStart" text="Start">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -41,12 +42,18 @@
                </children>
             </AnchorPane>
             <Separator prefWidth="200.0" />
-            <VBox>
+            <VBox spacing="10.0">
                <children>
                   <AnchorPane>
                      <children>
                         <Label text="Game Mode" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <ChoiceBox fx:id="modes" prefWidth="150.0" AnchorPane.rightAnchor="0.0" />
+                        <ChoiceBox fx:id="modes" prefWidth="150.0" AnchorPane.rightAnchor="10.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <Label text="Player Name" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <TextField fx:id="nameInput" AnchorPane.rightAnchor="10.0" />
                      </children>
                   </AnchorPane>
                </children>

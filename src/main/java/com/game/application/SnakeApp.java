@@ -4,6 +4,7 @@ import com.game.di.DependencyManager;
 import com.game.engine.world.GameWorld;
 import com.game.ui.MainMenu;
 import com.game.ui.controller.ControllerManager;
+import com.game.ui.game.HiscoreModel;
 import com.game.ui.game.NewGameModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,7 @@ public class SnakeApp extends Application {
         super.init();
 
         DependencyManager.set("world", new GameWorld());
-
+        DependencyManager.set("hiscores", new HiscoreModel());
         DependencyManager.set("m_new_game", new NewGameModel());
     }
 

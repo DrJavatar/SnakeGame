@@ -17,7 +17,7 @@ public class GameWorld implements Iterable<Entity> {
 
     public static final Random RANDOM = new Random();
 
-    private final Snake snake;
+    private Snake snake;
 
     private final List<Entity> entities;
     private final List<Entity> toAdd;
@@ -39,13 +39,20 @@ public class GameWorld implements Iterable<Entity> {
         toRemove = new ArrayList<>();
     }
 
+    public void reset() {
+        snake = new Snake(WIDTH / 2, HEIGHT / 2);
+        entities.clear();
+        toAdd.clear();
+        toRemove.clear();
+    }
+
     public void removeEntity(Entity entity) {
         toRemove.add(entity);
     }
 
     public boolean addEntity(Entity entity) {
         for (Entity value : entities) {
-            if(value.intersects(entity)) {
+            if (value.intersects(entity)) {
                 return false;
             }
         }
@@ -54,24 +61,15 @@ public class GameWorld implements Iterable<Entity> {
     }
 
     public void placeEntities(GameCanvas canvas) {
-        /*// Place walls on the top and bottom edges
-        for (double x = 0; x < WIDTH; x += BLOCK_SIZE) {
-            entities.add(new Wall(new Vector2d(x, 0), false));
-            entities.add(new Wall(new Vector2d(x, HEIGHT - BLOCK_SIZE), false));
-        }
-        // Place walls on the left and right edges
-        for (double y = BLOCK_SIZE; y < HEIGHT - BLOCK_SIZE; y += BLOCK_SIZE) {
-            entities.add(new Wall(new Vector2d(0, y), false));
-            entities.add(new Wall(new Vector2d(WIDTH - BLOCK_SIZE, y), false));
-        }*/
-
-        for(int i = 0; i < settings.getDifficulty().getObjectGenerationRate(); i++) {
+        for (int i = 0; i < settings.getDifficulty().getObjectGenerationRate(); i++) {
             double x = RANDOM.nextDouble(WIDTH / BLOCK_SIZE) * BLOCK_SIZE;
             double y = RANDOM.nextDouble(HEIGHT / BLOCK_SIZE) * BLOCK_SIZE;
             addEntity(new Wall(new Vector2d(x, y), true));
         }
 
-        addEntity(new Food(50, 50));
+        double x = RANDOM.nextDouble(WIDTH / BLOCK_SIZE) * BLOCK_SIZE;
+        double y = RANDOM.nextDouble(HEIGHT / BLOCK_SIZE) * BLOCK_SIZE;
+        addEntity(new Food(x, y));
     }
 
     public void onTick(GameCanvas canvas) {

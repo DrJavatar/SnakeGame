@@ -50,6 +50,7 @@ public class GameCanvas extends AnimationTimer implements GameSkin {
             if(world.isGameOver()) {
                 gc.setFill(Color.WHITE);
                 gc.fillText("Game Over!", width / 2, height / 2);
+                world.getState().onGameEnd(world.getSettings().getName());
                 stop();
             } else {
                 drawGame(world);
@@ -73,6 +74,5 @@ public class GameCanvas extends AnimationTimer implements GameSkin {
         for (Entity entity : world) {
             entity.drawEntity(gc);
         }
-
     }
 }

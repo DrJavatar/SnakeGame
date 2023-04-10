@@ -6,8 +6,6 @@ import com.game.engine.world.GameWorld;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 
 public class NewGameModel {
 
@@ -19,6 +17,11 @@ public class NewGameModel {
         difficulty.addListener((observable, oldValue, newValue) -> {
             GameWorld world = DependencyManager.get("world");
             world.getSettings().setDifficulty(newValue);
+        });
+
+        playerName.addListener((observable, oldValue, newValue) -> {
+            GameWorld world = DependencyManager.get("world");
+            world.getSettings().setName(newValue);
         });
 
     }

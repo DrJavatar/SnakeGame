@@ -5,10 +5,10 @@ import com.game.engine.GameSettings;
 import com.game.engine.world.GameWorld;
 import com.game.ui.controller.ControllerManager;
 import com.game.ui.controller.GameUIController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +21,12 @@ public class NewGameController extends GameUIController {
     @FXML
     private ChoiceBox<GameSettings.Difficulty> modes;
 
+    @FXML
+    private TextField nameInput;
+
+    @FXML
+    private Button startBtn;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -31,6 +37,10 @@ public class NewGameController extends GameUIController {
         modes.setValue(GameSettings.Difficulty.EASY);
 
         model.difficulty.bind(modes.valueProperty());
+
+        startBtn.disableProperty().bind(model.playerName.isEmpty());
+
+        model.playerName.bind(nameInput.textProperty());
     }
 
     @FXML
@@ -40,6 +50,10 @@ public class NewGameController extends GameUIController {
 
     @FXML
     public void onStart() throws IOException {
+        GameWorld world = DependencyManager.get("world");
+
+        world.reset();
+
         ControllerManager.switchToGame(this);
     }
 }
