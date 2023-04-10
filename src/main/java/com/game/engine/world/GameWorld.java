@@ -5,6 +5,7 @@ import com.game.engine.GameSettings;
 import com.game.engine.entity.Entity;
 import com.game.engine.entity.food.Food;
 import com.game.engine.entity.snake.Snake;
+import com.game.engine.entity.snake.SnakeBody;
 import com.game.engine.entity.wall.Wall;
 import com.game.ui.canvas.GameCanvas;
 import com.game.utilties.Vector2d;
@@ -51,6 +52,11 @@ public class GameWorld implements Iterable<Entity> {
     }
 
     public boolean addEntity(Entity entity) {
+        for (SnakeBody body : snake) {
+            if(entity.intersects(body)) {
+                return false;
+            }
+        }
         for (Entity value : entities) {
             if (value.intersects(entity)) {
                 return false;
