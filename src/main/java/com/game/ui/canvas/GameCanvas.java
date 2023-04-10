@@ -2,11 +2,8 @@ package com.game.ui.canvas;
 
 import com.game.di.DependencyManager;
 import com.game.engine.entity.Entity;
-import com.game.engine.entity.food.Food;
 import com.game.engine.entity.snake.Snake;
-import com.game.engine.entity.snake.SnakeBody;
 import com.game.engine.world.GameWorld;
-import com.game.utilties.Vector2d;
 import javafx.animation.AnimationTimer;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -49,8 +46,6 @@ public class GameCanvas extends AnimationTimer implements GameSkin {
             GameWorld world = DependencyManager.get("world");
             lastTick = now;
 
-            world.onTick(this);
-
             gc.clearRect(0, 0, width, height);
             if(world.isGameOver()) {
                 gc.setFill(Color.WHITE);
@@ -59,6 +54,8 @@ public class GameCanvas extends AnimationTimer implements GameSkin {
             } else {
                 drawGame(world);
             }
+
+            world.onTick(this);
         }
     }
 

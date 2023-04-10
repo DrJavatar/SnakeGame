@@ -6,14 +6,11 @@ import com.game.engine.entity.snake.Snake;
 import com.game.engine.world.GameWorld;
 import com.game.ui.canvas.GameCanvas;
 import com.game.ui.controller.GameUIController;
-import com.game.utilties.Vector2d;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static com.game.ui.canvas.GameCanvas.BLOCK_SIZE;
 
 public class GameScreenController extends GameUIController {
 

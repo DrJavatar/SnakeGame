@@ -2,8 +2,11 @@ package com.game.ui.game;
 
 import com.game.di.DependencyManager;
 import com.game.engine.GameSettings;
+import com.game.engine.world.GameWorld;
 import com.game.ui.controller.ControllerManager;
 import com.game.ui.controller.GameUIController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 
@@ -26,6 +29,8 @@ public class NewGameController extends GameUIController {
         }
 
         modes.setValue(GameSettings.Difficulty.EASY);
+
+        model.difficulty.bind(modes.valueProperty());
     }
 
     @FXML

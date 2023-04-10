@@ -14,9 +14,9 @@ public class GameSettings {
 
     public enum Difficulty {
         EASY(0),
-        NORMAL(20),
-        HARD(50),
-        IMPOSSIBLE(75);
+        NORMAL(10),
+        HARD(20),
+        IMPOSSIBLE(30);
 
         private final int objectGenerationRate;
 
