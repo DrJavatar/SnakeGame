@@ -1,6 +1,7 @@
 package com.game.ui.controller;
 
 import com.game.application.SnakeApp;
+import com.game.ui.GameScreenController;
 import com.game.ui.MainMenu;
 import com.game.ui.game.NewGameController;
 import com.game.ui.hiscores.HiscoreController;
@@ -57,6 +58,18 @@ public class ControllerManager {
         fxmlLoader.setLocation(uiFxml);
         Parent parent = fxmlLoader.load();
         from.primaryStage.setScene(new Scene(parent));
+    }
+
+    public static void switchToGame(GameUIController from) throws IOException {
+        URL uiFxml = SnakeApp.class.getResource("game.fxml");
+        FXMLLoader loader = new FXMLLoader();
+        GameScreenController screen = new GameScreenController();
+        screen.setPrimaryStage(from.getPrimaryStage());
+        loader.setController(screen);
+        loader.setLocation(uiFxml);
+        Parent parent = loader.load();
+        from.primaryStage.setScene(new Scene(parent));
+        screen.initGameControls();
     }
 
 }

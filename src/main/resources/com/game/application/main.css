@@ -70,3 +70,90 @@
 .scroll-bar-track:pressed {
     -fx-background-color: #777777;
 }
+
+.choice-box {
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: #ffffff;
+}
+
+.choice-box:hover {
+    -fx-background-color: #555555;
+}
+
+.choice-box:pressed {
+    -fx-background-color: #777777;
+}
+
+.choice-box .label {
+    -fx-text-fill: #ffffff;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #4d4d4d;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: #ffffff;
+}
+
+.choice-box .context-menu .menu-item {
+    -fx-text-fill: #ffffff;
+}
+
+.choice-box .context-menu .menu-item:focused {
+    -fx-background-color: #555555;
+}
+
+.choice-box .context-menu .menu-item:hover {
+    -fx-background-color: #555555;
+}
+
+.choice-box .check-mark {
+    -fx-background-color: #ffffff;
+    -fx-background-insets: 0;
+}
+
+/* ToolBar */
+.tool-bar {
+    -fx-background-color: #4d4d4d;
+    -fx-padding: 5;
+}
+
+/* ToolBar Buttons */
+.tool-bar .button {
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: #ffffff;
+}
+
+.tool-bar .button:hover {
+    -fx-background-color: #555555;
+}
+
+.tool-bar .button:pressed {
+    -fx-background-color: #777777;
+}
+
+/* ToolBar Labels */
+.tool-bar .label {
+    -fx-text-fill: #ffffff;
+}
+
+/* ToolBar Text Fields */
+.tool-bar .text-field {
+    -fx-background-color: #4d4d4d;
+    -fx-text-fill: #ffffff;
+    -fx-highlight-text-fill: #ffffff;
+    -fx-highlight-fill: #333333;
+}
+
+/* Separator */
+.separator {
+    -fx-background-color: #ffffff;
+    -fx-padding: 5 0;
+}
+
+.separator .line {
+    -fx-stroke: #ffffff;
+}
+

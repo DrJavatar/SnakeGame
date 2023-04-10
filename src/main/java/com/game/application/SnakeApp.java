@@ -1,6 +1,7 @@
 package com.game.application;
 
 import com.game.di.DependencyManager;
+import com.game.engine.world.GameWorld;
 import com.game.ui.MainMenu;
 import com.game.ui.controller.ControllerManager;
 import com.game.ui.game.NewGameModel;
@@ -17,6 +18,8 @@ public class SnakeApp extends Application {
     @Override
     public void init() throws Exception {
         super.init();
+
+        DependencyManager.set("world", new GameWorld());
 
         DependencyManager.set("m_new_game", new NewGameModel());
     }

@@ -1,10 +1,9 @@
 package com.game.ui.canvas;
 
+import com.game.engine.world.GameWorld;
+
 public interface GameSkin {
 
-    void drawGame();
-    void drawBody(double x, double y);
-    void drawHead(double x, double y);
-    void drawTail(double x, double y);
+    void drawGame(GameWorld world);
 
 }

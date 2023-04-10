@@ -1,32 +1,22 @@
 package com.game.engine.entity.snake;
 
 import com.game.engine.entity.Entity;
-import com.game.engine.world.behaviour.GameOverBehaviour;
+import com.game.engine.world.GameWorld;
 import com.game.utilties.Vector2d;
 
 public class SnakeBody extends Entity {
 
-    protected SnakeBody next;
-    protected SnakeBody previous;
+    private final Snake parent;
 
-    public SnakeBody(Vector2d position) {
+    public SnakeBody(Snake parent, Vector2d position) {
         super(position);
-        super.behaviour = new GameOverBehaviour(this);
+        this.parent = parent;
     }
 
-    public boolean isHead() {
-        return previous != null && next == null;
-    }
-
-    public boolean isTail() {
-        return previous == null && next != null;
-    }
-
-    public SnakeBody getNext() {
-        return next;
-    }
-
-    public SnakeBody getPrevious() {
-        return previous;
+    @Override
+    public void onTick(GameWorld world) {
+        if(parent.intersects(this)) {
+            world.setGameOver(true);
+        }
     }
 }

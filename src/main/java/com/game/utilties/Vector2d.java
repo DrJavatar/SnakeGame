@@ -1,6 +1,9 @@
 package com.game.utilties;
 
 public class Vector2d {
+
+    public final static Vector2d ZERO = new Vector2d(0, 0);
+
     private double x;
     private double y;
 
@@ -23,6 +26,15 @@ public class Vector2d {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public void set(double x, double y) {
+        setX(x);
+        setY(y);
+    }
+
+    public Vector2d add(Vector2d pos) {
+        return new Vector2d(this.x + pos.getX(), this.y + pos.getY());
     }
 
     public double magnitude() {
