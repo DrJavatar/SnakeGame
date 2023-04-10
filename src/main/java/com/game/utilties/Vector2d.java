@@ -1,7 +1,5 @@
 package com.game.utilties;
 
-import com.game.engine.entity.Locatable;
-
 public class Vector2d {
 
     public final static Vector2d ZERO = new Vector2d(0, 0);

@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -32,10 +31,11 @@
             <Separator prefWidth="200.0" />
             <AnchorPane>
                <children>
-                  <TextField prefHeight="27.0" prefWidth="396.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <HBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Open Saves" />
+                        <TextField fx:id="saveDir" prefHeight="27.0" prefWidth="396.0" />
+                        <Button mnemonicParsing="false" onAction="#openSaves" text="Open Saves" />
+                        <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onChange" text="Change" />
                         <Label text="Game Saves">
                            <font>
                               <Font size="18.0" />

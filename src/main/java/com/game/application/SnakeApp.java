@@ -6,6 +6,7 @@ import com.game.ui.MainMenu;
 import com.game.ui.controller.ControllerManager;
 import com.game.ui.game.HiscoreModel;
 import com.game.ui.game.NewGameModel;
+import com.game.ui.game.SettingsModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ public class SnakeApp extends Application {
         DependencyManager.set("world", new GameWorld());
         DependencyManager.set("hiscores", new HiscoreModel());
         DependencyManager.set("m_new_game", new NewGameModel());
+        DependencyManager.set("settings", new SettingsModel());
     }
 
     @Override

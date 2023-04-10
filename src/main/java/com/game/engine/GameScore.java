@@ -21,8 +21,11 @@ public class GameScore {
 
     private final Map<String, Integer> scores;
 
+    private String directory;
+
     public GameScore() {
         this.scores = new HashMap<>();
+        directory = "./";
         load();
     }
 
@@ -38,9 +41,13 @@ public class GameScore {
         this.score = 0;
     }
 
+    public void setDirectory(String directory) {
+        this.directory = directory;
+    }
+
     public void save() {
         try {
-            Path path = Path.of("./scores.json");
+            Path path = Path.of(directory,"scores.json");
             if(Files.notExists(path)) {
                 Files.createFile(path);
             }
@@ -52,7 +59,7 @@ public class GameScore {
 
     public void load() {
         try {
-            Path path = Path.of("./scores.json");
+            Path path = Path.of(directory, "scores.json");
             if(!Files.exists(path)) {
                 return;
             }
