@@ -46,8 +46,6 @@ public class GameScreenController extends GameUIController {
 
     @FXML
     public void onQuit() throws IOException {
-        GameWorld world = DependencyManager.get("world");
-        world.getState().onGameEnd(world.getSettings().getName());
         skin.stop();
         ControllerManager.switchToMainMenu(this);
     }

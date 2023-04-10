@@ -36,13 +36,14 @@ public class GameScore {
     }
 
     public void onGameEnd(String name) {
-        scores.put(name, score);
+        scores.put(name, this.score);
         save();
         this.score = 0;
     }
 
     public void setDirectory(String directory) {
         this.directory = directory;
+        load();
     }
 
     public void save() {
