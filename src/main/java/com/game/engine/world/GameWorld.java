@@ -42,6 +42,7 @@ public class GameWorld implements Iterable<Entity> {
 
     public void reset() {
         snake = new Snake(WIDTH / 2, HEIGHT / 2);
+        isGameOver = false;
         entities.clear();
         toAdd.clear();
         toRemove.clear();
